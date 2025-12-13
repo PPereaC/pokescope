@@ -1,5 +1,5 @@
 import { Routes, Route, BrowserRouter } from 'react-router-dom'
-import index from './views'
+import Index from './views/Index'
 import Detalle from './views/Detalle'
 
 function App() {
@@ -9,7 +9,7 @@ function App() {
       
       <BrowserRouter>
         <Routes>
-          <Route path='/' element={<index />} />
+          <Route path='/' element={<Index />} />
           <Route path='/pokemon/:id' element={<Detalle />} />
         </Routes>
       </BrowserRouter>
