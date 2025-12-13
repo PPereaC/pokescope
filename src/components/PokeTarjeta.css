@@ -1,0 +1,64 @@
+.pokemon-card {
+    border-radius: 20px;
+    border: 12px solid #f4d03f;
+    background: #fcf3cf;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.pokemon-card:hover {
+    transform: translateY(-5px);
+    cursor: pointer;
+}
+
+.pokemon-card-loading {
+    border: none;
+}
+
+.pokemon-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: transparent;
+}
+
+.pokemon-card-image-container {
+    margin: 0 15px;
+    background: linear-gradient(135deg, #85d8f5 0%, #a8e6ff 100%);
+    background-image: url(/img/fondo_tarjeta.jpg);
+    background-size: cover;
+    background-position: center;
+    background-blend-mode: soft-light;
+    border-radius: 12px;
+    padding: 15px;
+    border: 3px solid #333;
+    min-height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pokemon-card-image {
+    max-height: 180px;
+    object-fit: contain;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+}
+
+.pokemon-card-body {
+    padding: 15px;
+    background: transparent;
+}
+
+.pokemon-energy-badge {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #ff5722;
+    border: 2px solid #333;
+    display: inline-block;
+}
+
+.pokemon-card-footer {
+    background: rgba(200, 200, 200, 0.4);
+    border-top: 2px solid #999;
+}
