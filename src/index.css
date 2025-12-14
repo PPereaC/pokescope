@@ -2,3 +2,8 @@
     background-image: url('/img/fondo.jpg');
     background-size: 20%;
 }
+
+.search-input:focus {
+    box-shadow: none !important;
+    border-color: #6c757d !important; /* Mantiene el color gris del borde */
+}
