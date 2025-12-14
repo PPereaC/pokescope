@@ -1,13 +1,47 @@
+/* Contenedor de la tarjeta con efecto flip 3D */
+.pokemon-card-container {
+    perspective: 1000px;
+    width: 100%;
+    height: 550px;
+    position: relative;
+    cursor: pointer;
+}
+
+.pokemon-card-container .pokemon-card {
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+}
+
+/* Cara frontal */
+.pokemon-card-front {
+    transform: rotateY(0deg);
+}
+
+/* Cara trasera */
+.pokemon-card-back {
+    transform: rotateY(180deg);
+}
+
+.pokemon-card-container.flipped .pokemon-card-front {
+    transform: rotateY(180deg);
+}
+
+.pokemon-card-container.flipped .pokemon-card-back {
+    transform: rotateY(0deg);
+}
+
 .pokemon-card {
     border-radius: 20px;
     border: 12px solid #f4d03f;
     background: #fcf3cf;
     overflow: hidden;
-    transition: transform 0.3s ease;
 }
 
 .pokemon-card:hover {
-    transform: translateY(-5px);
     cursor: pointer;
 }
 
