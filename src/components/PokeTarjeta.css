@@ -59,7 +59,7 @@
 .pokemon-card-image-container {
     margin: 0 15px;
     background: linear-gradient(135deg, #85d8f5 0%, #a8e6ff 100%);
-    background-image: url(/img/fondo_tarjeta.jpg);
+    background-image: url(../assets/img/fondo_tarjeta.jpg);
     background-size: cover;
     background-position: center;
     background-blend-mode: soft-light;

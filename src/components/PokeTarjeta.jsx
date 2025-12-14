@@ -3,6 +3,7 @@ import axios from "axios"
 import { Link } from "react-router-dom"
 import { Col, Card, CardBody, CardFooter, CardImg, Badge } from "reactstrap"
 import "./PokeTarjeta.css"
+import loadingGif from "../assets/img/loading.gif"
 
 const PokeTarjeta = ({ poke }) => {
     const [pokemon, setPokemon] = useState({});
@@ -89,7 +90,7 @@ const PokeTarjeta = ({ poke }) => {
         return (
             <Col sm="6" md="4" lg="3" className="mb-4">
                 <Card className="pokemon-card-loading">
-                    <CardImg src="/img/loading.gif" height="250" className="p-3" alt="Cargando..." />
+                    <CardImg src={loadingGif} height="250" className="p-3" alt="Cargando..." />
                 </Card>
             </Col>
         );
