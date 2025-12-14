@@ -8,6 +8,7 @@ const PokeTarjeta = ({ poke }) => {
     const [pokemon, setPokemon] = useState({});
     const [imagen, setImagen] = useState('');
     const [movimientos, setMovimientos] = useState([]);
+    const [tipos, setTipos] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
@@ -22,6 +23,7 @@ const PokeTarjeta = ({ poke }) => {
             setPokemon(data);
             setImagen(getEnlaceImagen(data));
             await getMovimientosPokemon(data.moves);
+            await getTiposPokemon(data.types);
 
             setIsLoading(false);
         } catch (error) {
@@ -45,6 +47,24 @@ const PokeTarjeta = ({ poke }) => {
 
             const movesData = await Promise.all(movimientos);
             setMovimientos(movesData);
+        } catch (error) {
+            console.error("Error al cargar movimientos:", error);
+        }
+    }
+
+    const getTiposPokemon = async (tipos) => {
+        try {
+            const tiposData = tipos.map(async (t) => {
+                const response = await axios.get(t.type.url);
+                const tiposEnEspañol = response.data.names.find(n => n.language.name === "es");
+                return {
+                    nombre: tiposEnEspañol ? tiposEnEspañol.name : t.type.name,
+                    nombreOriginal: t.type.name
+                };
+            });
+
+            const tiposRespuesta = await Promise.all(tiposData);
+            setTipos(tiposRespuesta);
         } catch (error) {
             console.error("Error al cargar movimientos:", error);
         }
@@ -97,6 +117,31 @@ const PokeTarjeta = ({ poke }) => {
                         ))}
                     </div>
                 </CardBody>
+
+                {/* Footer */}
+                <CardFooter className="pokemon-card-footer bg-light">
+                    <div className="d-flex justify-content-between align-items-center flex-wrap">
+                        <div className="d-flex gap-2 mb-2 mb-sm-0">
+                            {tipos.map((tipo, index) => (
+                                <Badge 
+                                    key={index} 
+                                    pill 
+                                    className="text-capitalize"
+                                    style={{
+                                        backgroundColor: '#4a4a4a',
+                                        fontSize: '11px',
+                                        padding: '5px 10px'
+                                    }}
+                                >
+                                    {tipo.nombre}
+                                </Badge>
+                            ))}
+                        </div>
+                        <small className="text-muted">
+                            {(pokemon.weight / 10).toFixed(1)}kg • {(pokemon.height / 10).toFixed(1)}m
+                        </small>
+                    </div>
+                </CardFooter>
             </Card>
         </Col>
     )

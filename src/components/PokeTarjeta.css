@@ -36,12 +36,24 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
 }
 
 .pokemon-card-image {
     max-height: 180px;
     object-fit: contain;
     filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+}
+
+/* Sección de tipos */
+.pokemon-types-section {
+    background: transparent;
+}
+
+.pokemon-type-badge {
+    padding: 8px 16px;
+    font-size: 14px;
+    letter-spacing: 0.5px;
 }
 
 .pokemon-card-body {
